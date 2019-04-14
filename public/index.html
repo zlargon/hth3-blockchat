@@ -1,36 +1,115 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Hello, Blockstack!</title>
-  <link rel="stylesheet" href="bootstrap.min.css" />
-  <link rel="stylesheet" href="app.css" />
-  <script src="blockstack.js"></script>
-  <script src="blockchat.js"></script>
-  <script src="app.js"></script>
-</head>
-<body>
-  <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-      <div class="panel-landing" id="section-1">
-        <h1 class="landing-heading">Hello, Blockstack!</h1>
-        <p class="lead">
-          <a href="#" class="btn btn-primary btn-lg" id="signin-button">
-            Sign In with Blockstack
-          </a>
-        </p>
-      </div>
-      <div class="panel-welcome hide" id="section-2">
-        <div class="avatar-section">
-          <img src="https://s3.amazonaws.com/onename/avatar-placeholder.png" class="img-rounded avatar" id="avatar-image">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Encrypted Chat Messaging - Professional Use</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Ubuntu:400,300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Share+Tech"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <div class="textscramble">
+      <span class="tagline">Encrypted Chat Messaging</span>
+    </div>
+
+    <svg>
+      <filter id="blur" x="-200%" width="400%">
+        <feGaussianBlur stdDeviation="200,0" />
+
+        <!-- lower alpha of blur-->
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.4" />
+        </feComponentTransfer>
+
+        <!-- draw blur underneath source image-->
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </svg>
+
+    <div class="chat_container">
+      <div class="chat">
+        <div class="mine messages">
+          <div class="message">
+            Hi! I need to consult with you about my legal case,<br> there's something that I haven't told you about.
+					</div>
+					<div class="time">09:03:02 AM</div>
         </div>
-        <h1>Hello, <span id="heading-name">Anonymous</span>!</h1>
-        <p class="lead">
-          <a href="#" class="btn btn-primary btn-lg" id="signout-button">
-            Logout
-          </a>
-        </p>
+
+        <div class="yours messages">
+          <div class="message">
+            Sure, let's set up a time to discuss the details in person.
+          </div>
+          <div class="message">
+            Our messages and calls could be monitored.
+					</div>
+					<div class="time">09:04:23 AM</div>
+        </div>
+
+        <div class="mine messages">
+          <div class="message">
+            No no! This is an encrypted chat so all of our messages<br> are secure!
+          </div>
+          <div class="message">
+            It uses blockchain technology!
+					</div>
+					<div class="time">09:04:59 AM</div>
+        </div>
+
+        <div class="yours messages">
+          <div class="message">
+            Right!
+          </div>
+          <div class="message">
+            Ok! What did you want to submit?
+					</div>
+					<div class="message">
+						(Btw I'm still charging you by the hour for this)
+					</div>
+					<div class="time">09:05:47 AM</div>
+				</div>
+
+				<div class="mine messages">
+					<div class="message">
+						Ok...
+					</div>
+					<div class="time">09:06:20 AM</div>
+				</div>
+      </div>
+
+      <div class="chat__form">
+        <form id="chat__form">
+          <input
+            id="text-message"
+            type="text"
+            placeholder="Type your message here..."
+          />
+          <button id="send" type="submit">↑</button>
+        </form>
       </div>
     </div>
-  </div>
-</body>
+
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+    <script src="blockstack.js"></script>
+    <script src="blockchat.js"></script>
+		<script src="js/index.js"></script>
+    <script src="js/chat.js"></script>
+
+  </body>
 </html>

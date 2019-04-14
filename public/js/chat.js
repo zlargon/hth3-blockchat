@@ -1,3 +1,15 @@
+// auto login
+$(document).ready(() => {
+  if (blockstack.isUserSignedIn()) {
+    const profile = blockstack.loadUserData().profile
+    console.log(profile);
+  } else if (blockstack.isSignInPending()) {
+    blockstack.handlePendingSignIn().then(function(userData) {
+      window.location = window.location.origin
+    })
+  }
+});
+
 $(function() {
     $("#chat__form").on("submit", function(e) {
       e.preventDefault();
