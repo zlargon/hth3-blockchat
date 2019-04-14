@@ -43,7 +43,7 @@ const blockchat = {
         message: message,
         timestamp: Date.now()
       }),
-      { encrypt: true }
+      { encrypt: false }
     )
   },
 
@@ -52,7 +52,7 @@ const blockchat = {
     const me = blockstack.loadUserData().username.split('.')[0];
     return blockstack.getFile(
       `blockchat/${me}.json`,
-      { decrypt: true,
+      { decrypt: false,
         username: `${fromUser}.id.blockstack`
       })
       .catch(e => {
