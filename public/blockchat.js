@@ -1,4 +1,4 @@
-const blockchat = {
+const chat = {
 
   // 1. login
   login: () => {
@@ -35,29 +35,28 @@ const blockchat = {
       return null;
     }
 
-    const me = blockstack.loadUserData().username.split('.')[0];
-    return blockstack.putFile(
-      `blockchat/${toUser}.json`,
-      JSON.stringify({
-        sender: me,
-        message: message,
-        timestamp: Date.now()
-      }),
-      { encrypt: false }
-    )
+    const me = blockstack.loadUserData().username
+    const data = await chat.pull(me, toUser);
+    data.push({
+      sender: me,
+      message: message,
+      timestamp: +Date.now()
+    });
+    console.log(data);
+
+    return blockstack.putFile(`chat/${toUser}.json`, JSON.stringify(data), { encrypt: false });
   },
 
   // 5. pull messages from someone (promise)
-  pull: async (fromUser) => {
-    const me = blockstack.loadUserData().username.split('.')[0];
-    return blockstack.getFile(
-      `blockchat/${me}.json`,
-      { decrypt: false,
-        username: `${fromUser}.id.blockstack`
+  pull: async (fromUser, me = blockstack.loadUserData().username) => {
+    return blockstack.getFile(`chat/${me}.json`, { decrypt: false, username: fromUser })
+      .then(data => {
+        data = JSON.parse(data);
+        return Array.isArray(data) ? data : [];
       })
       .catch(e => {
         console.warn(e);
         return [];
-      })
+      });
   }
 };
