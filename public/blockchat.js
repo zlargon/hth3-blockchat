@@ -30,6 +30,11 @@ const blockchat = {
       return null;
     }
 
+    if (typeof message !== 'string') {
+      console.error('message should be a string');
+      return null;
+    }
+
     const me = blockstack.loadUserData().username.split('.')[0];
     return blockstack.putFile(
       `blockchat/${toUser}.json`,
@@ -51,6 +56,7 @@ const blockchat = {
         username: `${fromUser}.id.blockstack`
       })
       .catch(e => {
+        console.warn(e);
         return [];
       })
   }
