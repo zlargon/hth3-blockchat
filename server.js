@@ -3,7 +3,7 @@ const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const port = 8080;
+const port = 3000;
 
 // CORS
 function allowCrossDomain(req, res, next) {
