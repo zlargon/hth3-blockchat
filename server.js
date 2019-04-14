@@ -19,10 +19,17 @@ app.use('/', express.static(__dirname + '/public'));
 
 
 // HTTPs Server
-https.createServer({
-  key: fs.readFileSync('server.key'),
-  cert: fs.readFileSync('server.cert')
-}, app)
-.listen(port, () => {
-  console.log(`Example app listening on port ${port}! Go to https://localhost:${port}/`);
-})
+// https.createServer({
+//   key: fs.readFileSync('server.key'),
+//   cert: fs.readFileSync('server.cert')
+// }, app)
+// .listen(port, () => {
+//   console.log(`Example app listening on port ${port}! Go to https://localhost:${port}/`);
+// })
+
+app.listen(port, (err) => {
+  if (err) {
+    return console.log('something bad happened', err);
+  }
+  console.log(`server is listening on ${port}`);
+});

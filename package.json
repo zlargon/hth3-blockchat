@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "browserify": "browserify requires.js -o public/bundle.js",
-    "start": "npm run browserify && node server.js"
+    "start": "npm run browserify && node server.js",
+    "proxy": "ssh -R hth3-chatroom:80:localhost:8080 serveo.net"
   },
   "repository": {
     "type": "git",

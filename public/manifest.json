@@ -1,6 +1,6 @@
 {
   "name": "Hello, Blockstack",
-  "start_url": "192.168.0.10:8080",
+  "start_url": "localhost:8080",
   "description": "A simple demo of Blockstack Auth",
   "icons": [{
     "src": "https://helloblockstack.com/icon-192x192.png",
